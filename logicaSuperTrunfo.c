@@ -2,38 +2,6 @@
 // Tema 2 - Comparação das Cartas
 // Feito pelo aluno: Douglas Alves Costa
 
-    // Definição das variáveis para armazenar as propriedades das cidades
-        
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
-
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
-
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
-
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
-
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
-
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
-
-
 #include <stdio.h>
 
 // Estrutura para representar uma carta
@@ -76,26 +44,29 @@ void ler_carta(Carta *carta){
     calcular_propriedades(carta);
 }
 
-// Função para comparar duas cartas e exibir os resultados
+// Função para comparar os valores das duas cartas
 void comparar_cartas(Carta c1, Carta c2) {
     int pontos_c1 = 0, pontos_c2 = 0;
     printf("\n===Comparação das Cartas===\n");
     printf(" Carta 1 - Estado:%s Codigo:%s Cidade:%s População:%lu Area:%.2f PIB:%.2f Pontos Turisticos:%d Densidade:%.2f PIB per Capita:%.2f Poder:%.2f\n", c1.estado, c1.codigo, c1.cidade, c1.populacao, c1.area, c1.pib, c1.pontos_turisticos, c1.densidade_populacional, c1.pib_per_capita, c1.super_poder);
     printf(" Carta 2 - Estado:%s Codigo:%s Cidade:%s População:%lu Area:%.2f PIB:%.2f Pontos Turisticos:%d Densidade:%.2f PIB per Capita:%.2f Poder:%.2f\n", c2.estado, c2.codigo, c2.cidade, c2.populacao, c2.area, c2.pib, c2.pontos_turisticos, c2.densidade_populacional, c2.pib_per_capita, c2.super_poder);
-    
-    if (c1.populacao > c2.populacao) pontos_c1++; else pontos_c2++;
-    if (c1.area > c2.area) pontos_c1++; else pontos_c2++;
-    if (c1.pib > c2.pib) pontos_c1++; else pontos_c2++;
-    if (c1.pontos_turisticos > c2.pontos_turisticos) pontos_c1++; else pontos_c2++;
-    if (c1.densidade_populacional < c2.densidade_populacional) pontos_c1++; else pontos_c2++;
-    if (c1.pib_per_capita > c2.pib_per_capita) pontos_c1++; else pontos_c2++;
-    if (c1.super_poder > c2.super_poder) pontos_c1++; else pontos_c2++;
-    
+
+// Exibir os resultados e adiciona um ponto para o vencedor
+    printf("\n===Calculo das Cartas===\n");
+    if (c1.populacao > c2.populacao){printf("Cidade 1 tem maior população.\n"); pontos_c1++;} else {printf("Cidade 2 tem maior população.\n"); pontos_c2++;}
+    if (c1.area > c2.area){printf("Cidade 1 tem maior area.\n"); pontos_c1++;} else {printf("Cidade 2 tem maior area.\n"); pontos_c2++;}
+    if (c1.pib > c2.pib){printf("Cidade 1 tem maior PIB.\n"); pontos_c1++;} else {printf("Cidade 2 tem maior PIB.\n"); pontos_c2++;}
+    if (c1.pontos_turisticos > c2.pontos_turisticos){printf("Cidade 1 tem maior numero de pontos turisticos.\n"); pontos_c1++;} else {printf("Cidade 2 tem maior numero de pontos turisticos.\n"); pontos_c2++;}
+    if (c1.densidade_populacional < c2.densidade_populacional){printf("Cidade 1 tem menor densidade.\n"); pontos_c1++;} else {printf("Cidade 2 tem menor densidade.\n"); pontos_c2++;}
+    if (c1.pib_per_capita > c2.pib_per_capita){printf("Cidade 1 tem maior PIB per capita.\n"); pontos_c1++;} else {printf("Cidade 2 tem maior PIB per capita.\n"); pontos_c2++;}
+    if (c1.super_poder > c2.super_poder){printf("Cidade 1 tem maior super poder.\n"); pontos_c1++;} else {printf("Cidade 2 tem maior super poder.\n"); pontos_c2++;}
+
+// Mostra quem foi o vencedor com maior numero de pontos
     printf("\n===Resultado Final===\n");
     if (pontos_c1 > pontos_c2)
-        printf("A Carta 1 é a Vencedora!\n");
+        printf("A cidade vencedora é: %s\n", c1.cidade);
     else if (pontos_c2 > pontos_c1)
-        printf("A Carta 2 é a Vencedora!\n");
+        printf("A cidade vencedora é: %s\n", c2.cidade);
     else
         printf("Empate!\n");
 }
